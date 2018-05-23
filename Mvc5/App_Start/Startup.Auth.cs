@@ -51,7 +51,10 @@ namespace Mvc5
             //{
             //    Authorization = new[] { new HangfireAuthorizationFilter() }
             //});
+
+            // Hangfire 啟用Dashboard
             app.UseHangfireDashboard();
+            // Hangfire 啟用服務
             app.UseHangfireServer();
 
             // 註銷下列各行以啟用利用協力廠商登入提供者登入
