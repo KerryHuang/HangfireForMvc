@@ -31,7 +31,7 @@ namespace Mvc5.Controllers
         /// <returns></returns>
         public ActionResult AddDelayed()
         {
-            BackgroundJob.Schedule(() => Console.WriteLine("Hello, world. After a Days :)"), TimeSpan.FromDays(1));
+            BackgroundJob.Schedule(() => Console.WriteLine("Hello, world. After a Days :)"), TimeSpan.FromSeconds(10));
             return RedirectToAction("Index", "Hangfire");
         }
 
