@@ -1,11 +1,15 @@
 ﻿using Models;
 using System;
+using System.Linq;
 
 namespace Services
 {
     public class Service<TEntity> : IService<TEntity>
         where TEntity : class
     {
+
+        //public IRepository<TEntity> _repository { set; protected get; }
+
         private IRepository<TEntity> _repository;
 
         #region Constructor
@@ -70,7 +74,7 @@ namespace Services
         {
             try
             {
-                var entities = this._repository.GetAll();
+                var entities = this._repository.GetAll().ToList();
                 return new ServiceResult<TEntity>(entities, null);
             }
             catch (Exception ex)

@@ -22,6 +22,9 @@ namespace Mvc5
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            // Register DI 
+            AutofacConfig.Register();
+
             // MSSQL
             // GlobalConfiguration.Configuration.UseSqlServerStorage(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 

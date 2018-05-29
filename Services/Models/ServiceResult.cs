@@ -8,7 +8,7 @@ namespace Services
         where TEntity : class
     {
         private TEntity _entity { get; set; }
-        private IEnumerable<TEntity> _entities { get; set; }
+        private IList<TEntity> _entities { get; set; }
         private Exception _exception { get; set; }
 
         public ServiceResult(Exception exception)
@@ -22,7 +22,7 @@ namespace Services
             this._exception = exception;
         }
 
-        public ServiceResult(IEnumerable<TEntity> entities, Exception exception)
+        public ServiceResult(IList<TEntity> entities, Exception exception)
         {
             this._entities = entities;
             this._exception = exception;
@@ -52,7 +52,7 @@ namespace Services
             }
         }
 
-        public IEnumerable<TEntity> Entities => _entities;
+        public IList<TEntity> Entities => _entities;
 
         public TEntity Entity => _entity;
 

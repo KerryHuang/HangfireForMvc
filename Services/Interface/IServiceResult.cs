@@ -11,7 +11,7 @@ namespace Services
 
         int Count { get; }
 
-        IEnumerable<TEntity> Entities { get; }
+        IList<TEntity> Entities { get; }
 
         TEntity Entity { get; }
 
