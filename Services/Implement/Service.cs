@@ -7,15 +7,14 @@ namespace Services
     public class Service<TEntity> : IService<TEntity>
         where TEntity : class
     {
-
-        //public IRepository<TEntity> _repository { set; protected get; }
-
-        private IRepository<TEntity> _repository;
+        #region Properties
+        public IRepository<TEntity> Repository { set; get; }
+        #endregion
 
         #region Constructor
-        public Service(IRepository<TEntity> repository)
+        public Service()
         {
-            this._repository = repository;
+            Repository = new Repository<TEntity>();
         }
         #endregion
 
@@ -24,8 +23,8 @@ namespace Services
         {
             try
             {
-                this._repository.Create(entity);
-                this._repository.SaveChanges();
+                Repository.Create(entity);
+                Repository.SaveChanges();
                 return new ServiceResult<TEntity>(entity, null);
             }
             catch (Exception ex)
@@ -38,8 +37,8 @@ namespace Services
         {
             try
             {
-                this._repository.Delete(entity);
-                this._repository.SaveChanges();
+                Repository.Delete(entity);
+                Repository.SaveChanges();
                 return new ServiceResult<TEntity>(entity, null);
             }
             catch (Exception ex)
@@ -50,10 +49,10 @@ namespace Services
 
         public void Dispose()
         {
-            if (_repository != null)
+            if (Repository != null)
             {
-                this._repository.Dispose();
-                this._repository = null;
+                Repository.Dispose();
+                Repository = null;
             }
         }
 
@@ -61,7 +60,7 @@ namespace Services
         {
             try
             {
-                var entity = this._repository.Get(id);
+                var entity = Repository.Get(id);
                 return new ServiceResult<TEntity>(entity, null);
             }
             catch (Exception ex)
@@ -74,7 +73,7 @@ namespace Services
         {
             try
             {
-                var entities = this._repository.GetAll().ToList();
+                var entities = Repository.GetAll().ToList();
                 return new ServiceResult<TEntity>(entities, null);
             }
             catch (Exception ex)
@@ -87,8 +86,8 @@ namespace Services
         {
             try
             {
-                this._repository.Update(entity);
-                this._repository.SaveChanges();
+                Repository.Update(entity);
+                Repository.SaveChanges();
                 return new ServiceResult<TEntity>(entity, null);
             }
             catch (Exception ex)

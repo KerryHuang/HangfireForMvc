@@ -1,6 +1,7 @@
 ﻿using Hangfire;
 using Hangfire.MemoryStorage;
 using Hangfire.SQLite;
+using Mvc5.App_Start;
 using System.Configuration;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -24,6 +25,8 @@ namespace Mvc5
 
             // Register DI 
             AutofacConfig.Register();
+
+            //HangfireConfig.Register();
 
             // MSSQL
             // GlobalConfiguration.Configuration.UseSqlServerStorage(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
